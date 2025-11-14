@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.marketplace.controller.ResenaController"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+
+    <!-- Barra superior -->
+    <HBox alignment="CENTER_LEFT" spacing="20"
+          style="-fx-background-color: white; -fx-padding: 18 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 2);">
+
+        <HBox spacing="10" alignment="CENTER">
+            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                <image>
+                    <Image url="@images/icon.png"/>
+                </image>
+            </ImageView>
+            <Label text="Hacer Reseña"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        </HBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnVolver" text="← Volver" onAction="#handleVolver"
+                style="-fx-background-color: white; -fx-text-fill: #d98892; -fx-font-size: 13px; -fx-font-weight: 600; -fx-border-color: #d98892; -fx-border-width: 1.5; -fx-border-radius: 20; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 20;"/>
+    </HBox>
+
+    <!-- Contenido principal -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+        <VBox alignment="TOP_CENTER" style="-fx-background-color: transparent;">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- Tarjeta de reseña -->
+            <VBox spacing="30" maxWidth="700" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5);">
+
+                <!-- Información del producto -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <VBox alignment="CENTER" style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-padding: 10;">
+                        <ImageView fx:id="imgProducto" fitWidth="80" fitHeight="80" preserveRatio="true">
+                            <image>
+                                <Image url="@images/producto-placeholder.png"/>
+                            </image>
+                        </ImageView>
+                    </VBox>
+
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label fx:id="lblNombreProducto" text="Producto" wrapText="true"
+                               style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #2c3e50;"/>
+                        <Label fx:id="lblIdProducto" text="ID: 0"
+                               style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"/>
+                    </VBox>
+                </HBox>
+
+                <Separator style="-fx-background-color: #e9ecef;"/>
+
+                <!-- Calificación con estrellas -->
+                <VBox spacing="12" alignment="CENTER">
+                    <Label text="¿Cómo calificarías este producto?"
+                           style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+
+                    <HBox fx:id="contenedorEstrellas" spacing="8" alignment="CENTER">
+                        <!-- Las estrellas se agregan dinámicamente -->
+                    </HBox>
+
+                    <Label fx:id="lblCalificacion" text="Selecciona una calificación"
+                           style="-fx-font-size: 13px; -fx-text-fill: #6c757d; -fx-font-style: italic;"/>
+                </VBox>
+
+                <Separator style="-fx-background-color: #e9ecef;"/>
+
+                <!-- Comentario -->
+                <VBox spacing="10">
+                    <Label text="Escribe tu reseña"
+                           style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+
+                    <TextArea fx:id="txtComentario" promptText="Comparte tu experiencia con este producto..." wrapText="true" prefRowCount="6"
+                              style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+
+                    <Label fx:id="lblContador" text="0 / 500 caracteres"
+                           style="-fx-font-size: 12px; -fx-text-fill: #6c757d;"/>
+                </VBox>
+
+                <!-- Botón publicar -->
+                <Button fx:id="btnPublicar" text="📝 Publicar Reseña" onAction="#handlePublicar" maxWidth="Infinity"
+                        style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 16 40; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 12, 0, 0, 4);"/>
+
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+</VBox>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.marketplace.controller.HistorialPedidosController"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+
+    <!-- Barra superior -->
+    <HBox alignment="CENTER_LEFT" spacing="20"
+          style="-fx-background-color: white;
+                -fx-padding: 18 40;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 2);">
+
+        <HBox spacing="10" alignment="CENTER">
+            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                <image>
+                    <Image url="@images/icon.png"/>
+                </image>
+            </ImageView>
+            <Label text="Historial de Pedidos"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #2c3e50;"/>
+        </HBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Info del usuario -->
+        <HBox spacing="12" alignment="CENTER">
+            <StackPane style="-fx-background-color: #f8d7da; -fx-background-radius: 20; -fx-pref-width: 36; -fx-pref-height: 36;">
+                <Label text="👤" style="-fx-font-size: 18px;"/>
+            </StackPane>
+
+            <VBox spacing="2" alignment="CENTER_LEFT">
+                <Label text="Usuario" style="-fx-font-size: 10px; -fx-text-fill: #6c757d;"/>
+                <Label fx:id="lblUsuario"
+                       text="Usuario"
+                       style="-fx-font-size: 13px;
+                              -fx-font-weight: 600;
+                              -fx-text-fill: #2c3e50;"/>
+            </VBox>
+
+            <Button fx:id="btnVolverCatalogo"
+                    text="← Volver al Catálogo"
+                    onAction="#handleVolverCatalogo"
+                    style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);
+                           -fx-text-fill: white;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: 600;
+                           -fx-background-radius: 20;
+                           -fx-cursor: hand;
+                           -fx-padding: 8 20;
+                           -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);"/>
+        </HBox>
+    </HBox>
+
+    <!-- Contenedor principal con scroll -->
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: transparent;
+                       -fx-background: transparent;
+                       -fx-border-color: transparent;"
+                VBox.vgrow="ALWAYS">
+        <VBox spacing="20" style="-fx-background-color: transparent;">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <!-- Mensaje de bienvenida -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Mis Pedidos"
+                       style="-fx-font-size: 28px;
+                              -fx-font-weight: 700;
+                              -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="lblCantidadPedidos"
+                       text="Tienes 0 pedidos realizados"
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: #6c757d;"/>
+            </VBox>
+
+            <!-- Contenedor de pedidos -->
+            <VBox fx:id="contenedorPedidos" spacing="16">
+                <!-- Los pedidos se cargarán dinámicamente aquí -->
+            </VBox>
+
+            <!-- Mensaje cuando no hay pedidos -->
+            <VBox fx:id="mensajeSinPedidos"
+                  spacing="20"
+                  alignment="CENTER"
+                  visible="false"
+                  managed="false"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 60 40;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+
+                <Label text="📦"
+                       style="-fx-font-size: 64px;"/>
+
+                <VBox spacing="8" alignment="CENTER">
+                    <Label text="Sin pedidos aún"
+                           style="-fx-font-size: 24px;
+                                  -fx-font-weight: 700;
+                                  -fx-text-fill: #2c3e50;"/>
+                    <Label text="Cuando realices tu primera compra, aparecerá aquí"
+                           style="-fx-font-size: 14px;
+                                  -fx-text-fill: #6c757d;"/>
+                </VBox>
+
+                <Button text="Ir al Catálogo"
+                        onAction="#handleVolverCatalogo"
+                        style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-font-weight: 600;
+                               -fx-background-radius: 20;
+                               -fx-cursor: hand;
+                               -fx-padding: 12 32;
+                               -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);"/>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

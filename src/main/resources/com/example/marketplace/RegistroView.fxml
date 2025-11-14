@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.marketplace.controller.RegistroController"
+           style="-fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+
+    <!-- Contenedor principal blanco -->
+    <VBox alignment="CENTER" spacing="20" maxWidth="550" maxHeight="700"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 16;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 40, 0, 0, 10);">
+        <padding>
+            <Insets top="40" right="50" bottom="40" left="50"/>
+        </padding>
+
+        <!-- Logo e ícono -->
+        <VBox alignment="CENTER" spacing="10">
+            <ImageView fitWidth="60" fitHeight="60" preserveRatio="true">
+                <image>
+                    <Image url="@images/icon.png"/>
+                </image>
+            </ImageView>
+            <Label text="¡Únete a nosotros!"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Crea tu cuenta para comenzar a comprar"
+                   style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+
+        <!-- Pestañas de navegación -->
+        <HBox spacing="0" alignment="CENTER" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8;">
+            <Button text="Iniciar Sesión"
+                    onAction="#handleVolverLogin"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #7f8c8d;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: 500;
+                           -fx-background-radius: 8 0 0 8;
+                           -fx-padding: 10 30;
+                           -fx-border-width: 0;
+                           -fx-cursor: hand;"/>
+            <Button text="Crear Cuenta"
+                    style="-fx-background-color: white;
+                           -fx-text-fill: #2c3e50;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: 600;
+                           -fx-background-radius: 0 8 8 0;
+                           -fx-padding: 10 30;
+                           -fx-border-width: 0;
+                           -fx-cursor: hand;"/>
+        </HBox>
+
+        <!-- Formulario -->
+        <VBox spacing="16" maxWidth="450">
+            <!-- Fila 1: Nombre y Correo -->
+            <HBox spacing="12">
+                <!-- Campo Nombre -->
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Nombre Completo"
+                           style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                    <TextField fx:id="txtNombre"
+                               promptText="Tu nombre"
+                               style="-fx-background-color: #f8f9fa;
+                                      -fx-border-color: #e9ecef;
+                                      -fx-border-width: 1;
+                                      -fx-border-radius: 8;
+                                      -fx-background-radius: 8;
+                                      -fx-padding: 11 14;
+                                      -fx-font-size: 13px;
+                                      -fx-text-fill: #2c3e50;
+                                      -fx-prompt-text-fill: #adb5bd;"/>
+                </VBox>
+
+                <!-- Campo Email -->
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Correo Electrónico"
+                           style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                    <TextField fx:id="txtCorreo"
+                               promptText="tu@email.com"
+                               style="-fx-background-color: #f8f9fa;
+                                      -fx-border-color: #e9ecef;
+                                      -fx-border-width: 1;
+                                      -fx-border-radius: 8;
+                                      -fx-background-radius: 8;
+                                      -fx-padding: 11 14;
+                                      -fx-font-size: 13px;
+                                      -fx-text-fill: #2c3e50;
+                                      -fx-prompt-text-fill: #adb5bd;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Fila 2: Contraseña y Confirmar -->
+            <HBox spacing="12">
+                <!-- Campo Contraseña -->
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Contraseña"
+                           style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                    <PasswordField fx:id="txtContrasena"
+                                   promptText="Mín. 6 caracteres"
+                                   style="-fx-background-color: #f8f9fa;
+                                          -fx-border-color: #e9ecef;
+                                          -fx-border-width: 1;
+                                          -fx-border-radius: 8;
+                                          -fx-background-radius: 8;
+                                          -fx-padding: 11 14;
+                                          -fx-font-size: 13px;
+                                          -fx-text-fill: #2c3e50;
+                                          -fx-prompt-text-fill: #adb5bd;"/>
+                </VBox>
+
+                <!-- Campo Confirmar Contraseña -->
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Confirmar Contraseña"
+                           style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                    <PasswordField fx:id="txtConfirmarContrasena"
+                                   promptText="Repetir contraseña"
+                                   style="-fx-background-color: #f8f9fa;
+                                          -fx-border-color: #e9ecef;
+                                          -fx-border-width: 1;
+                                          -fx-border-radius: 8;
+                                          -fx-background-radius: 8;
+                                          -fx-padding: 11 14;
+                                          -fx-font-size: 13px;
+                                          -fx-text-fill: #2c3e50;
+                                          -fx-prompt-text-fill: #adb5bd;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Campo Dirección (ancho completo) -->
+            <VBox spacing="8">
+                <Label text="Dirección"
+                       style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                <TextField fx:id="txtDireccion"
+                           promptText="Tu dirección completa"
+                           style="-fx-background-color: #f8f9fa;
+                                  -fx-border-color: #e9ecef;
+                                  -fx-border-width: 1;
+                                  -fx-border-radius: 8;
+                                  -fx-background-radius: 8;
+                                  -fx-padding: 11 14;
+                                  -fx-font-size: 13px;
+                                  -fx-text-fill: #2c3e50;
+                                  -fx-prompt-text-fill: #adb5bd;"/>
+            </VBox>
+
+            <!-- Mensaje de error -->
+            <Label fx:id="lblMensaje"
+                   wrapText="true"
+                   alignment="CENTER"
+                   style="-fx-text-fill: #e74c3c; -fx-font-size: 12px; -fx-font-weight: 500;"/>
+
+            <!-- Botón Registrar -->
+            <Button fx:id="btnRegistrar"
+                    text="Crear Cuenta"
+                    onAction="#handleRegistro"
+                    defaultButton="true"
+                    style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);
+                           -fx-text-fill: white;
+                           -fx-font-size: 15px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 8;
+                           -fx-padding: 14 0;
+                           -fx-pref-width: 450;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 12, 0, 0, 4);">
+            </Button>
+
+            <!-- Botón Volver al Catálogo -->
+            <Button fx:id="btnVolverCatalogo"
+                    text="← Volver al Catálogo"
+                    onAction="#handleVolverCatalogo"
+                    style="-fx-background-color: white;
+                           -fx-text-fill: #6c757d;
+                           -fx-font-size: 14px;
+                           -fx-font-weight: 500;
+                           -fx-border-color: #e9ecef;
+                           -fx-border-width: 1.5;
+                           -fx-border-radius: 8;
+                           -fx-background-radius: 8;
+                           -fx-cursor: hand;
+                           -fx-padding: 12 0;
+                           -fx-pref-width: 450;">
+            </Button>
+        </VBox>
+    </VBox>
+
+</StackPane>

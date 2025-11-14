@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.marketplace.controller.MensajeLoginRequeridoController">
+
+    <VBox alignment="CENTER" maxHeight="300.0" maxWidth="450.0" style="-fx-background-color: #f8d7da; -fx-background-radius: 20; -fx-border-radius: 20;">
+
+        <padding>
+            <Insets bottom="40" left="40" right="40" top="40" />
+        </padding>
+
+        <!-- Icono -->
+        <Label style="-fx-font-size: 48px;" text="🔒" textFill="#d98892">
+            <VBox.margin>
+                <Insets bottom="20" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Título -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: black;" text="Iniciar Sesión">
+            <VBox.margin>
+                <Insets bottom="10" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Mensaje -->
+        <Label style="-fx-font-size: 16px; -fx-text-fill: black;" text="Solo usuarios registrados" textAlignment="CENTER" wrapText="true">
+            <VBox.margin>
+                <Insets bottom="5" />
+            </VBox.margin>
+        </Label>
+
+        <Label style="-fx-font-size: 16px; -fx-text-fill: black;" text="pueden acceder a esta opción" textAlignment="CENTER" wrapText="true">
+            <VBox.margin>
+                <Insets bottom="30" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Botones -->
+        <HBox alignment="CENTER" spacing="15">
+            <Button fx:id="btnIrLogin" onAction="#handleIrLogin" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" style="-fx-background-color: D98892FF; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30 12 30; -fx-background-radius: 25; -fx-cursor: hand;" text="Ir a Login" />
+
+            <Button fx:id="btnCancelar" onAction="#handleCancelar" onMouseEntered="#handleMouseEnteredCancel" onMouseExited="#handleMouseExitedCancel" style="-fx-background-color: #ecf0f1; -fx-text-fill: #7f8c8d; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30 12 30; -fx-background-radius: 25; -fx-cursor: hand;" text="Cancelar" />
+        </HBox>
+
+    </VBox>
+
+</StackPane>

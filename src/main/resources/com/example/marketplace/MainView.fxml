@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainContainer" spacing="0" style="-fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.marketplace.controller.MainController">
+
+   <!-- Barra superior elegante -->
+   <HBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-padding: 18 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 2);">
+
+      <!-- Logo a la izquierda -->
+      <HBox alignment="CENTER" spacing="10">
+         <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+            <image>
+               <Image url="@images/icon.png" />
+            </image>
+         </ImageView>
+         <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Marketplace" />
+      </HBox>
+
+      <!-- Espaciador flexible -->
+      <Region HBox.hgrow="ALWAYS" />
+
+      <!-- Barra de búsqueda centrada -->
+      <HBox alignment="CENTER" spacing="8" style="-fx-background-color: #f8f9fa; -fx-background-radius: 25; -fx-padding: 4 8 4 16; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 25;">
+         <Label style="-fx-font-size: 16px; -fx-text-fill: #6c757d;" text="🔍" />
+         <TextField fx:id="searchField" onAction="#handleSearch" prefWidth="350" promptText="Buscar productos..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-prompt-text-fill: #adb5bd;" />
+         <Button fx:id="searchButton" onAction="#handleSearch" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892); -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: 600; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 20; -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.3), 8, 0, 0, 2);" text="Buscar" />
+      </HBox>
+
+      <!-- Espaciador flexible -->
+      <Region HBox.hgrow="ALWAYS" />
+
+      <!-- Botón de perfil -->
+      <Button fx:id="btnPerfil" onAction="#handlePerfil" style="-fx-background-color: f8d7da; -fx-text-fill: black; -fx-font-size: 18px; -fx-font-weight: bold; -fx-border-color: f8d7da; -fx-border-radius: 40; -fx-background-radius: 40; -fx-cursor: hand; -fx-padding: 8 8;" text="👤" />
+
+      <!-- Sección de usuario a la derecha -->
+      <HBox alignment="CENTER" spacing="12">
+
+         <VBox alignment="CENTER_LEFT" spacing="2">
+            <Label style="-fx-font-size: 10px; -fx-text-fill: #6c757d;" text="Bienvenido" />
+            <Label fx:id="lblUsuario" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;" text="Invitado" />
+         </VBox>
+
+         <Button fx:id="btnLogin" onAction="#handleLogin" style="-fx-background-color: white; -fx-text-fill: #d98892; -fx-font-size: 13px; -fx-font-weight: 600; -fx-border-color: #d98892; -fx-border-width: 1.5; -fx-border-radius: 20; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 20;" text="Iniciar Sesión" />
+
+         <Button fx:id="btnCerrarSesion" managed="false" onAction="#handleCerrarSesion" style="-fx-background-color: white; -fx-text-fill: #e74c3c; -fx-font-size: 13px; -fx-font-weight: 600; -fx-border-color: #e74c3c; -fx-border-width: 1.5; -fx-border-radius: 20; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 20;" text="Cerrar Sesión" visible="false" />
+
+         <!-- Botón del carrito -->
+         <StackPane>
+            <Button fx:id="btnCarrito" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892); -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 24; -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);" text="🛒 Carrito" />
+            <Label fx:id="lblContadorCarrito" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 10px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 4 8; -fx-effect: dropshadow(gaussian, rgba(231, 76, 60, 0.5), 6, 0, 0, 2);" text="0" translateX="-5" translateY="5" visible="false" StackPane.alignment="TOP_RIGHT" />
+         </StackPane>
+      </HBox>
+   </HBox>
+
+   <!-- Barra de herramientas -->
+   <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: white;                 -fx-padding: 16 40;                 -fx-border-color: #f0f0f0;                 -fx-border-width: 0 0 1 0;">
+
+      <!-- Botones de acción -->
+      <Button fx:id="btnNuevoProducto" onAction="#handleAddProduct" style="-fx-background-color: #f8f9fa;                      -fx-text-fill: #2c3e50;                      -fx-font-size: 13px;                      -fx-font-weight: 600;                      -fx-border-color: #e9ecef;                      -fx-border-width: 1;                      -fx-border-radius: 8;                      -fx-background-radius: 8;                      -fx-cursor: hand;                      -fx-padding: 8 16;" text="➕ Nuevo Producto" />
+
+      <Button onAction="#handleRefresh" style="-fx-background-color: #f8f9fa;                      -fx-text-fill: #2c3e50;                      -fx-font-size: 13px;                      -fx-font-weight: 600;                      -fx-border-color: #e9ecef;                      -fx-border-width: 1;                      -fx-border-radius: 8;                      -fx-background-radius: 8;                      -fx-cursor: hand;                      -fx-padding: 8 16;" text="🔄 Actualizar" />
+
+      <Region HBox.hgrow="ALWAYS" />
+
+      <Button fx:id="btnPedidos" onAction="#irAHistorialPedidos" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);                            -fx-text-fill: white;                            -fx-font-size: 13px;                            -fx-font-weight: bold;                            -fx-background-radius: 20;                            -fx-cursor: hand;                            -fx-padding: 8 24;                            -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);" text="Pedidos" />
+      <Button fx:id="btnUsuarios" managed="false" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);                            -fx-text-fill: white;                            -fx-font-size: 13px;                            -fx-font-weight: bold;                            -fx-background-radius: 20;                            -fx-cursor: hand;                            -fx-padding: 8 24;                            -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);" text="Usuarios" visible="false" />
+      <Button fx:id="btnPedidosAdmin" managed="false" onAction="#irAPedidosAdmin" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);                            -fx-text-fill: white;                            -fx-font-size: 13px;                            -fx-font-weight: bold;                            -fx-background-radius: 20;                            -fx-cursor: hand;                            -fx-padding: 8 24;                            -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);" text="Pedidos" visible="false" />
+
+      <!-- Indicador de estado -->
+      <HBox alignment="CENTER" spacing="8" style="-fx-background-color: #d1f2eb;                    -fx-background-radius: 20;                    -fx-padding: 6 16;">
+         <Label style="-fx-font-size: 12px; -fx-text-fill: #198754; -fx-font-weight: bold;" text="✓" />
+         <Label fx:id="statusLabel" style="-fx-text-fill: #198754;                        -fx-font-size: 12px;                        -fx-font-weight: 600;" text="Sistema listo" />
+      </HBox>
+   </HBox>
+
+   <!-- Contenedor principal con sidebar y productos -->
+   <HBox spacing="0" VBox.vgrow="ALWAYS">
+
+      <!-- Panel lateral de categorías -->
+      <VBox fx:id="sidebarCategorias" spacing="0" style="-fx-background-color: white;                   -fx-border-color: #f0f0f0;                   -fx-border-width: 0 1 0 0;                   -fx-pref-width: 220;                   -fx-padding: 20 0;">
+
+         <!-- ScrollPane para las categorías -->
+         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;                                  -fx-background: transparent;                                  -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox fx:id="categoriasContainer" spacing="4" style="-fx-padding: 16 12;">
+
+               <!-- Botón "Todo" -->
+               <Button fx:id="btnCatTodo" maxWidth="Infinity" onAction="#handleCategoriaTodo" style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);                           -fx-text-fill: white;                           -fx-font-size: 13px;                           -fx-font-weight: 600;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="✨ Todo" />
+
+               <!-- Categorías -->
+               <Button fx:id="btnCatElectronica" maxWidth="Infinity" onAction="#handleCategoriaElectronica" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="💻 Electrónica" />
+
+               <Button fx:id="btnCatRopa" maxWidth="Infinity" onAction="#handleCategoriaRopa" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="👕 Ropa" />
+
+               <Button fx:id="btnCatHogar" maxWidth="Infinity" onAction="#handleCategoriaHogar" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="🏠 Hogar" />
+
+               <Button fx:id="btnCatCocina" maxWidth="Infinity" onAction="#handleCategoriaCocina" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="🍳 Cocina" />
+
+               <Button fx:id="btnCatDeporte" maxWidth="Infinity" onAction="#handleCategoriaDeporte" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="⚽ Deporte" />
+
+               <Button fx:id="btnCatJoyeria" maxWidth="Infinity" onAction="#handleCategoriaJoyeria" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="💎 Joyería" />
+
+               <Button fx:id="btnCatTaylorSwift" maxWidth="Infinity" onAction="#handleCategoriaTaylorSwift" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="🎵 Taylor Swift" />
+
+               <Button fx:id="btnCatInfantil" maxWidth="Infinity" onAction="#handleCategoriaInfantil" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="👶 Infantil" />
+
+               <Button fx:id="btnCatMascotas" maxWidth="Infinity" onAction="#handleCategoriaMascotas" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="🐾 Mascotas" />
+
+               <Button fx:id="btnCatMusica" maxWidth="Infinity" onAction="#handleCategoriaMusica" style="-fx-background-color: transparent;                           -fx-text-fill: #6c757d;                           -fx-font-size: 13px;                           -fx-font-weight: 500;                           -fx-border-color: transparent;                           -fx-border-width: 1;                           -fx-border-radius: 10;                           -fx-background-radius: 10;                           -fx-cursor: hand;                           -fx-padding: 10 16;                           -fx-alignment: CENTER-LEFT;" text="🎸 Musica" />
+            </VBox>
+         </ScrollPane>
+      </VBox>
+
+      <!-- Área de productos con scroll -->
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent;                       -fx-background: transparent;                       -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
+         <GridPane fx:id="productGrid" alignment="CENTER" hgap="20" style="-fx-background-color: transparent;" vgap="20">
+            <padding>
+               <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+         </GridPane>
+      </ScrollPane>
+
+   </HBox>
+
+</VBox>

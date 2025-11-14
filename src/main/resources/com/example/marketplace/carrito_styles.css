@@ -1,0 +1,56 @@
+/* Eliminar líneas y fondos del ListView */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 0 16 0; /* Espaciado entre tarjetas */
+    -fx-background-insets: 0;
+}
+
+.list-view .list-cell:filled:selected {
+    -fx-background-color: transparent;
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: transparent;
+}
+
+/* Eliminar el fondo azul de selección */
+.list-view .list-cell:filled:selected:focused,
+.list-view .list-cell:filled:selected {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+/* Eliminar líneas horizontales */
+.list-view .list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.list-view:focused .list-cell:filled:selected {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar styling opcional para que se vea mejor */
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #d98892;
+    -fx-background-radius: 5;
+}
+
+.list-view .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #c97782;
+}

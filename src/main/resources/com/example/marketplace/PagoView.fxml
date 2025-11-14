@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.marketplace.controller.PagoController"
+            style="-fx-background-color: #f8f9fa;">
+
+    <!-- Header -->
+    <top>
+        <VBox style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                <Label text="Finalizar Compra" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Contenido principal -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox alignment="TOP_CENTER" style="-fx-padding: 30;">
+                <HBox spacing="30" alignment="TOP_CENTER" style="-fx-max-width: 1200px;">
+
+                    <!-- Columna izquierda: Formulario -->
+                    <VBox spacing="25" HBox.hgrow="ALWAYS" style="-fx-max-width: 600px;">
+
+                        <!-- Información de Envío -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+                            <Label text="Información de Envío" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                            <VBox spacing="8">
+                                <Label text="Nombre Completo" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                <TextField fx:id="txtNombreCompleto" promptText="Ingrese su nombre completo"
+                                           style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                <Label text="Campo obligatorio" style="-fx-text-fill: #d98892; -fx-font-size: 11px;"/>
+                            </VBox>
+
+                            <VBox spacing="8">
+                                <Label text="Dirección" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                <TextField fx:id="txtDireccion" promptText="Ej. Calle Falsa 123"
+                                           style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                <Label text="Campo obligatorio" style="-fx-text-fill: #d98892; -fx-font-size: 11px;"/>
+                            </VBox>
+
+                            <HBox spacing="15">
+                                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                    <Label text="Ciudad" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                    <TextField fx:id="txtCiudad" promptText="Ej. Ciudad Pastel"
+                                               style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                    <Label text="Campo obligatorio" style="-fx-text-fill: #d98892; -fx-font-size: 11px;"/>
+                                </VBox>
+
+                                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                    <Label text="Código Postal" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                    <TextField fx:id="txtCodigoPostal" promptText="Ej. 12345"
+                                               style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                    <Label text="Campo obligatorio" style="-fx-text-fill: #d98892; -fx-font-size: 11px;"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Método de Pago -->
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+                            <Label text="Método de Pago" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                            <!-- Opción Tarjeta -->
+                            <RadioButton fx:id="rbTarjeta" text="Tarjeta de Crédito/Débito"
+                                         style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+
+                            <!-- Campos de Tarjeta -->
+                            <VBox fx:id="contenedorTarjeta" spacing="15">
+                                <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 0 0 0;">
+                                    <Label text="🔒 Todas las transacciones son seguras y cifradas"
+                                           style="-fx-text-fill: #28a745; -fx-font-size: 12px;"/>
+                                </HBox>
+
+                                <VBox spacing="8">
+                                    <Label text="* Número de Tarjeta" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                    <TextField fx:id="txtNumeroTarjeta" promptText="XXXX XXXX XXXX XXXX"
+                                               style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                </VBox>
+
+                                <HBox spacing="15">
+                                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                        <Label text="* Fecha de Caducidad" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                        <TextField fx:id="txtFechaCaducidad" promptText="MM/AA"
+                                                   style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                    </VBox>
+
+                                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                        <Label text="* CVV" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #495057;"/>
+                                        <TextField fx:id="txtCVV" promptText="123"
+                                                   style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;"/>
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+
+                            <!-- Opción Contraentrega -->
+                            <RadioButton fx:id="rbContraentrega" text="ContraEntrega"
+                                         style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 15 0 0 0; -fx-text-fill: #495057;"/>
+
+                            <!-- Mensaje Contraentrega -->
+                            <VBox fx:id="lblMensajeContraentrega" alignment="CENTER" spacing="10"
+                                  style="-fx-background-color: #fff3cd; -fx-border-color: #ffc107; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20;"
+                                  visible="false" managed="false">
+                                <Label text="📦" style="-fx-font-size: 32px;"/>
+                                <Label text="Tu pedido llegará en 10 días hábiles"
+                                       style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #856404; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+                                <Label text="El pago se realizará al momento de la entrega"
+                                       style="-fx-font-size: 13px; -fx-text-fill: #856404; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+                            </VBox>
+                        </VBox>
+
+                    </VBox>
+
+                    <!-- Columna derecha: Resumen -->
+                    <VBox spacing="20" style="-fx-min-width: 350px; -fx-max-width: 350px;">
+                        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+                            <Label text="Resumen del Pedido" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                            <!-- Lista de productos -->
+                            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-max-height: 300px;">
+                                <VBox fx:id="resumenPedido" spacing="10">
+                                    <!-- Los productos se agregan dinámicamente -->
+                                </VBox>
+                            </ScrollPane>
+
+                            <Separator/>
+
+                            <!-- Subtotal -->
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Subtotal:" style="-fx-font-size: 14px; -fx-text-fill: #495057;" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="lblSubtotal" text="0" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+
+                            <!-- Envío -->
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Envío:" style="-fx-font-size: 14px; -fx-text-fill: #495057;" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="lblEnvio" text="0" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+
+                            <Separator/>
+
+                            <!-- Total -->
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Total:" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="lblTotal" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #d98892;"/>
+                            </HBox>
+
+                            <!-- Botón Confirmar -->
+                            <Button fx:id="btnConfirmarCompra" text="Confirmar Compra" onAction="#handleConfirmarCompra"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);"/>
+
+                            <!-- Botón Volver -->
+                            <Button text="Volver al Carrito" onAction="#handleVolverCarrito"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 12; -fx-background-radius: 10; -fx-border-color: #e9ecef; -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;"/>
+                        </VBox>
+                    </VBox>
+
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

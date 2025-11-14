@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.marketplace.controller.DetallePedidoController"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+
+    <!-- Barra superior -->
+    <HBox alignment="CENTER_LEFT" spacing="20"
+          style="-fx-background-color: white;
+                -fx-padding: 18 40;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 2);">
+
+        <HBox spacing="10" alignment="CENTER">
+            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                <image>
+                    <Image url="@images/icon.png"/>
+                </image>
+            </ImageView>
+            <Label text="Detalle del Pedido"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #2c3e50;"/>
+        </HBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Botones de navegación -->
+        <HBox spacing="12" alignment="CENTER">
+            <Button fx:id="btnVolverHistorial"
+                    text="← Volver al Historial"
+                    onAction="#handleVolverHistorial"
+                    style="-fx-background-color: white;
+                           -fx-text-fill: #d98892;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: 600;
+                           -fx-border-color: #d98892;
+                           -fx-border-width: 1.5;
+                           -fx-border-radius: 20;
+                           -fx-background-radius: 20;
+                           -fx-cursor: hand;
+                           -fx-padding: 8 20;"/>
+
+            <Button fx:id="btnVolverCatalogo"
+                    text="🏠 Catálogo"
+                    onAction="#handleVolverCatalogo"
+                    style="-fx-background-color: linear-gradient(to right, #e8a5aa, #d98892);
+                           -fx-text-fill: white;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: 600;
+                           -fx-background-radius: 20;
+                           -fx-cursor: hand;
+                           -fx-padding: 8 20;
+                           -fx-effect: dropshadow(gaussian, rgba(217, 136, 146, 0.4), 10, 0, 0, 3);"/>
+        </HBox>
+    </HBox>
+
+    <!-- Contenedor principal con scroll -->
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: transparent;
+                       -fx-background: transparent;
+                       -fx-border-color: transparent;"
+                VBox.vgrow="ALWAYS">
+        <VBox spacing="24" style="-fx-background-color: transparent;">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <!-- Información del pedido -->
+            <VBox spacing="20"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 30;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label fx:id="lblNumeroPedido"
+                               text="Pedido #0000"
+                               style="-fx-font-size: 24px;
+                                      -fx-font-weight: 700;
+                                      -fx-text-fill: #2c3e50;"/>
+                        <Label fx:id="lblFechaPedido"
+                               text="Fecha: --/--/----"
+                               style="-fx-font-size: 14px;
+                                      -fx-text-fill: #6c757d;"/>
+                    </VBox>
+
+                    <VBox spacing="6" alignment="CENTER_RIGHT">
+                        <Label fx:id="lblEstadoPedido"
+                               text="Pendiente"
+                               style="-fx-background-color: #fff3cd;
+                                      -fx-text-fill: #856404;
+                                      -fx-font-size: 13px;
+                                      -fx-font-weight: 600;
+                                      -fx-padding: 8 20;
+                                      -fx-background-radius: 20;"/>
+                        <Label fx:id="lblTotalPedido"
+                               text="Total: $0.00"
+                               style="-fx-font-size: 20px;
+                                      -fx-font-weight: 700;
+                                      -fx-text-fill: #d98892;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Lista de productos -->
+            <VBox spacing="16">
+                <Label text="Productos del Pedido"
+                       style="-fx-font-size: 18px;
+                              -fx-font-weight: 600;
+                              -fx-text-fill: #2c3e50;"/>
+
+                <VBox fx:id="contenedorProductos" spacing="12">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
+                </VBox>
+            </VBox>
+
+            <!-- Resumen del pedido -->
+            <VBox spacing="16"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 24;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+
+                <Label text="Resumen"
+                       style="-fx-font-size: 18px;
+                              -fx-font-weight: 600;
+                              -fx-text-fill: #2c3e50;"/>
+
+                <Separator style="-fx-background-color: #e9ecef;"/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Subtotal:"
+                           style="-fx-font-size: 14px;
+                                  -fx-text-fill: #6c757d;"
+                           HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblSubtotal"
+                           text="0.00"
+                           style="-fx-font-size: 16px;
+                                  -fx-font-weight: 600;
+                                  -fx-text-fill: #2c3e50;"/>
+                </HBox>
+
+                <Separator style="-fx-background-color: #e9ecef;"/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Total:"
+                           style="-fx-font-size: 18px;
+                                  -fx-font-weight: 700;
+                                  -fx-text-fill: #2c3e50;"
+                           HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal"
+                           text="0.00"
+                           style="-fx-font-size: 22px;
+                                  -fx-font-weight: 700;
+                                  -fx-text-fill: #d98892;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

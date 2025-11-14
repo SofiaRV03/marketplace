@@ -1,0 +1,236 @@
+-- Base de datos: marketplace (SQLite3)
+-- Convertido desde MySQL/MariaDB
+
+-- Tabla: usuario
+CREATE TABLE IF NOT EXISTS usuario (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre VARCHAR(150) NOT NULL,
+    correo VARCHAR(150) UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    tipo VARCHAR(50) NOT NULL DEFAULT 'cliente',
+    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    direccion VARCHAR(255) NOT NULL DEFAULT 'Sin dirección'
+);
+
+-- Datos iniciales: usuario
+INSERT INTO usuario (id_usuario, nombre, correo, contrasena, tipo, fecha_registro, direccion) VALUES
+(11, 'Taylor Swift', 'taylor@example.com', '1313', 'cliente', '2025-09-15 02:30:26', 'Av. Principal 123, New York'),
+(16, 'Gracie Abrams', 'gracie@example.com', '123456', 'cliente', '2025-09-15 03:05:17', 'Calle Luna 45, Los Ángeles'),
+(18, 'Charli xcx', 'brat@gmail.com', 'apple360', 'cliente', '2025-09-15 03:24:11', '742 Evergreen Terrace, Springfield'),
+(19, 'Sofia Restrepo', 'sofiarestrepo072005@gmail.com', '132456', 'admin', '2025-09-18 04:48:23', 'Calle 10 #25-50, Medellín'),
+(21, 'BlackPink', 'blackpink@gmail.com', 'negrorosa', 'cliente', '2025-09-18 05:14:25', 'Av. Siempre Viva 742, Seúl'),
+(22, 'Alba Lucia Villegas', 'albalucia@hotmail.com', 'teamosofi', 'cliente', '2025-09-19 03:15:18', 'Calle 8 #12-115'),
+(23, 'Allison Restrepo', 'allisonmariana@gmail.com', 'allison123', 'cliente', '2025-10-16 03:54:44', 'calle 3 #23 45'),
+(24, 'Alba Lucia Villegas', 'alba@hotmail.com', '123456', 'cliente', '2025-10-18 03:42:35', 'calle 8 #12-115');
+
+-- Tabla: categorias
+CREATE TABLE IF NOT EXISTS categorias (
+    id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre VARCHAR(100)
+);
+
+-- Datos iniciales: categorias
+INSERT INTO categorias (id_categoria, nombre) VALUES
+(1, 'Ropa'),
+(2, 'Calzado'),
+(3, 'Electrónica'),
+(4, 'Hogar'),
+(5, 'Cocina'),
+(6, 'Deporte'),
+(7, 'Joyería'),
+(8, 'Taylor Swift'),
+(9, 'Infantil'),
+(10, 'Animales'),
+(11, 'Mascotas'),
+(12, 'Musica');
+
+-- Tabla: producto
+CREATE TABLE IF NOT EXISTS producto (
+    id_producto INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre VARCHAR(150) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INTEGER NOT NULL DEFAULT 0,
+    imagen VARCHAR(200) NOT NULL DEFAULT 'Sin imágen'
+);
+
+-- Datos iniciales: producto
+INSERT INTO producto (id_producto, nombre, descripcion, precio, stock, imagen) VALUES
+(1, 'Lover', 'Album de Taylor Swift', 250000.00, 19, 'lover.png'),
+(2, 'Folklore', 'Album de Taylor Swift', 150000.00, 8, 'folklore.png'),
+(4, 'Peluche', 'Peluche de Enter', 50000.00, 18, 'enter.jpg'),
+(5, 'Taza Rosada', 'Disfruta tus bebidas favoritas con estilo. Esta encantadora taza rosada combina diseño moderno y delicadeza.
+Características:
+
+Material: Cerámica de alta calidad, resistente al calor.
+
+Capacidad: 350 ml.
+
+Medidas: 9 cm de alto × 8 cm de diámetro.
+
+Color: Rosa pastel con acabado brillante.
+
+Apta para: Microondas y lavavajillas.', 75000.00, 10, 'taza.png'),
+(8, 'Estuche Celular', 'Dale un toque adorable y moderno a tu celular con este estuche transparente decorado con un tierno gatito negro en relieve 3D. Su diseño combina dulzura y protección para tu dispositivo.
+
+Características:
+
+Material: TPU flexible y resistente a impactos.
+
+Diseño: Transparente con detalles de brillos y figura 3D de gato negro con lazo rosa.
+
+Protección: Esquinas reforzadas contra caídas y rayones.
+
+Ajuste perfecto: Acceso fácil a botones y puertos.
+
+Compatibilidad: Disponible para varios modelos de iPhone.', 25000.00, 30, 'estuche_gato_1.png'),
+(10, 'Audífonos Bluetooth Inalámbricos', 'Audífonos TWS con cancelación de ruido, batería de 24h, resistentes al agua IPX5', 45900.00, 150, '514vwxueu7L._UF1000,1000_QL80_.jpg'),
+(11, 'Cargador Rápido 3 Puertos USB', 'Cargador de pared 102W con 2 puertos USB-C y 1 USB-A, carga rápida para celular y tablet', 32500.00, 200, 'cargador.jpeg'),
+(12, 'Mouse Inalámbrico RGB rosado', 'Mouse gamer recargable con 7 botones programables y luces LED personalizables', 38700.00, 80, 'mouse.jpeg'),
+(13, 'Lámpara LED Escritorio Regulable', 'Lámpara LED touch con 3 niveles de brillo, puerto USB para cargar celular, flexible 360°', 42300.00, 120, 'lampara.jpg'),
+(14, 'Organizador Giratorio Especias', 'Torre giratoria para 20 frascos de especias, ahorra espacio en cocina, incluye etiquetas', 54900.00, 110, 'especias.jpg'),
+(15, 'Juego de Sartenes Antiadherentes 3 Piezas', 'Set de sartenes de aluminio con recubrimiento cerámico, aptas para todo tipo de cocina', 89500.00, 65, 'sartenes.jpg'),
+(18, 'Set 12 Brochas Maquillaje Profesional', 'Brochas suaves con estuche, fibras sintéticas premium, mango ergonómico', 34900.00, 160, 'brochas.jpg'),
+(19, 'Rodillo Jade Facial Masajeador', 'Rodillo facial de piedra natural para masajes, reduce hinchazón y mejora circulación', 27800.00, 190, 'rodillo.jpg'),
+(20, 'Espejo LED Maquillaje 10X con varias luces', 'Espejo táctil con luz LED regulable, aumento 10X, rotación 360°, recargable USB', 52300.00, 95, 'espejo led.jpg'),
+(21, 'Plancha Alisadora Cerámica Profesional', 'Plancha para cabello con placas de turmalina, temperatura ajustable 150-230°C', 78900.00, 70, 'plancha.jpg'),
+(25, 'Muñeca Interactiva con Accesorios', 'Muñeca de 30cm con 10 accesorios, ropa intercambiable, articulaciones móviles', 54600.00, 110, 'muñeca}.jpg'),
+(26, 'Banda Elástica Resistencia Set 5 Niveles', 'Set de bandas de ejercicio con diferentes resistencias, incluye bolsa y guía', 34900.00, 150, 'bandas.jpg'),
+(27, 'Botella Agua Deportiva de 1 litro', 'Botella motivacional con marcador de tiempo, libre BPA, tapa antigoteo', 25600.00, 200, 'termo.jpeg'),
+(28, 'Tapete Yoga Antideslizante 6mm', 'Colchoneta para yoga con correa de transporte, material NBR ecológico', 54900.00, 110, 'tapete.jpeg');
+
+-- Tabla: carrito
+CREATE TABLE IF NOT EXISTS carrito (
+    id_carrito INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    fecha_creacion DATE,
+    estado VARCHAR(50) NOT NULL DEFAULT 'activo',
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+-- Datos iniciales: carrito
+INSERT INTO carrito (id_carrito, id_usuario, fecha_creacion, estado) VALUES
+(1, 11, '2025-10-07', 'finalizado'),
+(2, 11, '2025-10-15', 'finalizado'),
+(3, 11, '2025-10-15', 'finalizado'),
+(4, 11, '2025-10-15', 'finalizado'),
+(5, 11, '2025-10-17', 'finalizado'),
+(6, 11, '2025-10-17', 'finalizado'),
+(7, 11, '2025-10-17', 'finalizado'),
+(8, 11, '2025-10-17', 'activo');
+
+-- Tabla: carrito_producto
+CREATE TABLE IF NOT EXISTS carrito_producto (
+    id_carrito INTEGER NOT NULL,
+    id_producto INTEGER NOT NULL,
+    cantidad INTEGER,
+    subtotal DECIMAL(10,2),
+    PRIMARY KEY (id_carrito, id_producto),
+    FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
+-- Datos iniciales: carrito_producto
+INSERT INTO carrito_producto (id_carrito, id_producto, cantidad, subtotal) VALUES
+(1, 4, 1, 50000.00),
+(2, 4, 1, 50000.00),
+(3, 4, 1, 50000.00),
+(4, 4, 1, 50000.00),
+(5, 2, 2, 300000.00),
+(6, 2, 11, 1650000.00),
+(7, 1, 1, 250000.00),
+(7, 2, 2, 300000.00);
+
+-- Tabla: producto_categoria
+CREATE TABLE IF NOT EXISTS producto_categoria (
+    id_producto INTEGER NOT NULL,
+    id_categoria INTEGER NOT NULL,
+    PRIMARY KEY (id_producto, id_categoria),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto) ON DELETE CASCADE,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE
+);
+
+-- Datos iniciales: producto_categoria
+INSERT INTO producto_categoria (id_producto, id_categoria) VALUES
+(1, 8),
+(1, 12),
+(2, 8),
+(2, 12),
+(4, 3),
+(4, 4),
+(5, 4),
+(5, 5),
+(8, 3),
+(10, 3),
+(10, 12),
+(11, 3),
+(12, 3),
+(13, 3),
+(13, 4),
+(14, 4),
+(14, 5),
+(15, 5),
+(20, 4),
+(25, 9),
+(26, 6),
+(27, 6),
+(28, 6);
+
+-- Tabla: pedido
+CREATE TABLE IF NOT EXISTS pedido (
+    id_pedido INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    fecha_pedido DATE,
+    total DECIMAL(10,2),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+-- Tabla: producto_pedido
+CREATE TABLE IF NOT EXISTS producto_pedido (
+    id_pedido INTEGER NOT NULL,
+    id_producto INTEGER NOT NULL,
+    cantidad INTEGER,
+    precio_unitario DECIMAL(10,2),
+    subtotal DECIMAL(10,2),
+    PRIMARY KEY (id_pedido, id_producto),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
+-- Tabla: pago
+CREATE TABLE IF NOT EXISTS pago (
+    id_pago INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_pedido INTEGER,
+    monto DECIMAL(10,2),
+    metodo VARCHAR(100),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
+);
+
+-- Tabla: promocion
+CREATE TABLE IF NOT EXISTS promocion (
+    id_promocion INTEGER PRIMARY KEY AUTOINCREMENT,
+    codigo VARCHAR(50),
+    descripcion TEXT,
+    valor_descuento DECIMAL(10,2)
+);
+
+-- Tabla: usuario_promocion
+CREATE TABLE IF NOT EXISTS usuario_promocion (
+    id_usuario INTEGER NOT NULL,
+    id_promocion INTEGER NOT NULL,
+    usado INTEGER,
+    PRIMARY KEY (id_usuario, id_promocion),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_promocion) REFERENCES promocion(id_promocion)
+);
+
+-- Tabla: resena
+CREATE TABLE IF NOT EXISTS resena (
+    id_resena INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    id_producto INTEGER,
+    comentario TEXT,
+    calificacion INTEGER,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
