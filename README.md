@@ -132,7 +132,7 @@ El sistema utiliza una base de datos relacional para gestionar la persistencia d
 A continuación se presentan los flujos de interacción clave dentro del sistema:
 
 ### 1. Autenticación y Registro
-![Autenticación y Registro](docs/diagrams/registro.png)
+![Autenticación y Registro](docs/diagrams/Registro.png)
 Describe el proceso de validación de credenciales y la creación de nuevas cuentas de usuario.
 - **Inicio de Sesión:** El sistema verifica las credenciales con la base de datos. Si son válidas, se genera un token de sesión; de lo contrario, se muestra un mensaje de error.
 - **Registro:** Los datos del nuevo usuario se validan y se guardan en la base de datos, notificando al usuario tras el éxito del proceso.
