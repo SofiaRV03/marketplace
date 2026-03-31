@@ -167,7 +167,7 @@ El flujo crítico de finalización de compra.
 ### Pasos para Ejecutar
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/marketplace.git
+   git clone https://github.com/SofiaRV03/marketplace.git
    cd marketplace
    ```
 
